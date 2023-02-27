@@ -122,6 +122,11 @@ int main(int argc, char *argv[])
             }
             else
             {
+                if (Table.isFull())
+                {
+                    endGame = true;
+                    break;
+                }
                 Table.clearConsole();
             }
         }
@@ -145,7 +150,7 @@ int main(int argc, char *argv[])
         }
         if (endGame)
         {
-            cout << "You are so intelligent! Do you wanna play one more time ? (Y/N";
+            cout << "You are so intelligent! Do you wanna play one more time ? (Y/N) : ";
             char ok;
             cin >> ok;
             if (ok == 'N' || ok == 'n')
