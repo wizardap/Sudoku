@@ -1,14 +1,21 @@
-# Sudoku version 0.2
-Make for my final project in 2023
+# Sudoku
 
-### Short introduction
- Play Sudoku with Mouse and Keyboard
-### Tutorial Guide version 0.2
- - Step 1:Extract the file zip
- 
- - Step 2: Open the terminal
- - Step 3: Type "make all" and enter
- - Step 4: Type "make run" to play
+This game uses SDL2 library and C++ language. I made this game for my final project.
 
- 
-  
+## Installation 
+>*Before install this game, you need to install [**SDL2 basic**](https://lazyfoo.net/tutorials/SDL/01_hello_SDL/index.php)  and [**SDL2 addition libraries**](https://lazyfoo.net/tutorials/SDL/06_extension_libraries_and_loading_other_image_formats/index.php) in your Operating System*
+### **Code::Block**
+Step 1: Download the game.<br/>
+Step 2: Open the Sudoku.cbp <br/>
+Step 3: On the menu bar, click *Build->Build and run*
+
+## Demo Video
+
+
+## Contributing
+
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

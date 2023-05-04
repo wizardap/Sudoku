@@ -22,6 +22,12 @@ $(TARGET): $(OBJS)
 $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CPPFLAGS) $(addprefix -I,$(INCLUDE_PATHS)) $(addprefix -L,$(LIBRARY_PATHS)) -c $< -o $@
 
+
+
+# debug: $(BUILDDIR)/Level.o
+
+# $(BUILDDIR)/Level.o: $(SRCDIR)/Level.cpp
+# 	$(CXX) $(CPPFLAGS) $(addprefix -I,$(INCLUDE_PATHS)) $(addprefix -L,$(LIBRARY_PATHS)) -c $< -o $@
 clean:
 # if WINDOWS, use the below line
 	del /s /q $(TARGET).exe $(BUILDDIR) 

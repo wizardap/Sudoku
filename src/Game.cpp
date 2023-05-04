@@ -102,6 +102,11 @@ bool Game::init()
         return false;
     }
 
+    if (Game_Level.init(Game_Renderer) == false)
+    {
+        SDL_Log("Failed to load level class !");
+        return false;
+    }
     if (Game_Notice.init(Game_Renderer) == false)
     {
         SDL_Log("Failed to initialize Notice!");
@@ -159,12 +164,15 @@ void Game::run()
         SDL_Event e;
         paused = false;
         started = true;
+        int diff = Game_Level.getDifficulty(Game_Renderer);
         Game_Timer.start();
         Game_Notice.waiting();
         Game_Option.resetState();
         Game_Board.setLockingState(false);
-        Game_Board.setDifficulty(1);
+        Game_Board.setDifficulty(diff);
         Game_Turn.setDefaultFoul(allow_fouls);
+        if (diff == -1)
+            running = false;
         while (running)
         {
             while (SDL_PollEvent(&e))
@@ -185,7 +193,11 @@ void Game::run()
                     case Options::NEWGAME:
                         surrender(false);
                         Game_Turn.setDefaultFoul(allow_fouls);
-                        start();
+                        if (start() == -1)
+                        {
+                            running = false;
+                            break;
+                        }
                         break;
                     case Options::SURRENDER:
                         if (started)
@@ -261,17 +273,19 @@ void Game::run()
     }
     close();
 }
-void Game::start()
+int Game::start()
 {
     paused = false;
     started = true;
     SoundPlayer->stopMusic();
     SoundPlayer->playMusic("Chill.mp3");
+    int diff = Game_Level.getDifficulty(Game_Renderer);
+    Game_Board.setLockingState(false);
+    Game_Board.setDifficulty(diff);
     Game_Timer.start();
     Game_Notice.waiting();
     Game_Option.resetState();
-    Game_Board.setLockingState(false);
-    Game_Board.setDifficulty(1);
+    return diff;
 }
 
 void Game::pause()
@@ -297,8 +311,17 @@ void Game::close()
     Game_Turn.destroy();
     Game_Board.destroy();
     Game_Option.destroy();
+    Game_Over.destroy();
+    Game_Menu.destroy();
+    Game_Level.destroy();
+    Game_Notice.destroy();
 
+    SoundPlayer->destroy();
     FontManager->destroy();
+
+    SDL_FreeSurface(WindowLogo);
+    WindowLogo = NULL;
+
     SDL_DestroyRenderer(Game_Renderer);
     Game_Renderer = NULL;
 

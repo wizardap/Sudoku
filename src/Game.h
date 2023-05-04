@@ -15,6 +15,7 @@
 #include "Options.h"
 #include "Menu.h"
 #include "Texture.h"
+#include "Level.h"
 
 class Game
 {
@@ -23,7 +24,7 @@ public:
     virtual ~Game();
     bool init();
     void run();
-    void start();
+    int start();
     void pause();
     void surrender(bool value);
     void render();
@@ -43,6 +44,7 @@ private:
     Texture Game_Over;
     NoticeWindow Game_Notice;
     Menu Game_Menu;
+    Level Game_Level;
 
     int allow_fouls = 3;
     bool started;

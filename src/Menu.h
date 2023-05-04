@@ -23,6 +23,7 @@ private:
     {
         NEWGAME,
         TUTORIAL,
+        RULE,
         QUIT,
         TYPE_TOTAL
     };
@@ -30,7 +31,8 @@ private:
     enum State
     {
         MAIN,
-        RULE,
+        TUTORIAL_MAIN,
+        RULE_MAIN,
         STATE_TOTAL
     };
 
@@ -38,7 +40,7 @@ private:
     ButtonType gCurrentButtonType;
     TextButton gButtonText[TYPE_TOTAL];
     IconButton gReturn;
-    Texture menu_background, tutorial_background;
+    Texture menu_background, tutorial_background, rule_background;
 };
 
 #endif // MENU_H
