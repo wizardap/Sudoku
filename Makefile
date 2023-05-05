@@ -6,6 +6,7 @@ ifeq ($(OS),Windows_NT)
 	LIBFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 else 
 	LIBFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+endif
 
 # Source files and objects
 SRCDIR = src
@@ -33,5 +34,5 @@ clean:
 ifeq ($(OS),Windows_NT)
 	del /s /q $(TARGET).exe $(BUILDDIR) 
 else 
-	rm -rf $(TARGET) $(BUILDDIR)
+	rm -rf $(TARGET) $(BUILDDIR)/*.o
 endif
