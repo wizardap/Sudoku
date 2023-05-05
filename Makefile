@@ -24,7 +24,7 @@ TARGET = Sudoku
 $(TARGET): $(OBJS)
 	$(CXX) $(CPPFLAGS) $(addprefix -I,$(INCLUDE_PATHS)) $(addprefix -L,$(LIBRARY_PATHS)) $(OBJS) -o $@ $(LIBFLAGS)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
+$(BUILDDIR)/%.o:$(SRCDIR)/%.cpp
 	$(CXX) $(CPPFLAGS) $(addprefix -I,$(INCLUDE_PATHS)) $(addprefix -L,$(LIBRARY_PATHS)) -c $< -o $@
 
 
@@ -32,7 +32,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
 
 clean:
 ifeq ($(OS),Windows_NT)
-	del /s /q $(TARGET).exe $(BUILDDIR) 
+	del /s /q $(TARGET).exe $(BUILDDIR)\*.o
 else 
 	rm -rf $(TARGET) $(BUILDDIR)/*.o
 endif

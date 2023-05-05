@@ -3,7 +3,7 @@
 This game uses SDL2 library and C++ language. I made this game for my final project.
 
 ## Installation (Only for Windows, waiting for Linux)
->*Before install this game, you need to install G++ version [**minGW**](https://www.ics.uci.edu/~pattis/common/handouts/mingweclipse/mingw.html) in your Operating System. You must also install [**make**](https://linuxhint.com/install-use-make-windows/)*
+>*Before install this game, you need to install G++ version [**minGW**](https://www.ics.uci.edu/~pattis/common/handouts/mingweclipse/mingw.html) in your Operating System. You must also install [**make**](https://linuxhint.com/install-use-make-windows/) and change the resolution of screen is 100% to have the best experience about this game*
 ### Visual Studio Code
 Step 1: Download the game and extract the download zip file<br/>
 Step 2: Open the Sudoku folder directory in Terminal  <br/>
