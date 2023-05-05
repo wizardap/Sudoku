@@ -1,7 +1,11 @@
 # Compiler and flags
 CXX = g++
 CPPFLAGS = -std=c++11 -Wall -Wextra 
-LIBFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+
+ifeq ($(OS),Windows_NT)
+	LIBFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+else 
+	LIBFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 # Source files and objects
 SRCDIR = src
@@ -24,12 +28,10 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
 
 
 
-# debug: $(BUILDDIR)/Level.o
 
-# $(BUILDDIR)/Level.o: $(SRCDIR)/Level.cpp
-# 	$(CXX) $(CPPFLAGS) $(addprefix -I,$(INCLUDE_PATHS)) $(addprefix -L,$(LIBRARY_PATHS)) -c $< -o $@
 clean:
-# if WINDOWS, use the below line
+ifeq ($(OS),Windows_NT)
 	del /s /q $(TARGET).exe $(BUILDDIR) 
-# if LINUX, use the below line
-#  rm -rf $(TARGET) $(BUILDDIR)
+else 
+	rm -rf $(TARGET) $(BUILDDIR)
+endif

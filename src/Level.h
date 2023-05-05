@@ -8,6 +8,7 @@
 #include "TextButton.h"
 #include "Texture.h"
 #include <SDL2/SDL.h>
+#include <cassert>
 
 class Level
 {
@@ -37,7 +38,7 @@ private:
         if (l > r)
             return -1;
         std::mt19937 rng(std::chrono::high_resolution_clock::now().time_since_epoch().count());
-        return l + (int)rng() % (r - l + 1);
+        return l + rng() % (r - l + 1);
     }
 };
 

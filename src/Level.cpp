@@ -58,15 +58,16 @@ int Level::getDifficulty(SDL_Renderer *Level_Renderer)
             }
             if (gButton[MEDIUM].isSelected())
             {
-                diff = Rand(28, 30);
+                diff = Rand(31, 38);
             }
             if (gButton[HARD].isSelected())
             {
-                diff = Rand(31, 38);
+                diff = Rand(39, 42);
+                assert(diff >= 39 && diff <= 42);
             }
             if (gButton[INSANE].isSelected())
             {
-                diff = Rand(40, 45);
+                diff = 52;
             }
         }
         draw(Level_Renderer);
